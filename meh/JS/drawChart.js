@@ -23,7 +23,7 @@ function parseURLParams(url) {
     return parms;
 }
 
-function drawQuestion(poll,qes){
+function drawQuestion(poll,qes,name){
 		var formData = {pid : String(poll), qid : String(qes)}
 		var options= {packages: ['corechart'], callback : drawChart};
       google.load("visualization", "1", options);
@@ -37,7 +37,7 @@ function drawQuestion(poll,qes){
 	          }).responseText;
 			
         var options = {
-          title: 'Poll Results',
+          title: name,
           pieHole: 0.2,
         };
         var data = new google.visualization.DataTable(jsonData);
@@ -73,4 +73,15 @@ function getQuestionNumber(pollid){
 	          async: false
 	          }).responseText;
 	return Number(jsonData);
+}
+function getPollNames(pollid){
+	var formData = {pid : String(pollid)}
+	var jsonData = $.ajax({
+		url: "actions/action_getPollNames.php",
+		type: "POST",
+		data: formData,
+		dataType:"json",
+		async: false
+	}).responseText;
+	return jsonData;
 }

@@ -1,8 +1,11 @@
-<?php
-if (isset ( $_SESSION ['username'] ))
-	header ( 'Location: ./?' );
-
+<?php 
+if (isset ( $_SESSION ['username'] )){
+	$_SESSION['msg']='<p id="error">Already logged in</p>';
+	header ( 'Location: ./' );
+	return false;
+}
 ?>
+
 <script type="text/javascript" src="./JS/registerInput.js"></script>
 <div class="register-box">
 	<h1>Register</h1>

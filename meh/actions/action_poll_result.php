@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset ( $_SESSION ['username'] )){
+	$_SESSION['msg']='<p id="error">Not logged in</p>';
+	header ( 'Location: ../' );
+	return false;
+}
+
 $stmt = $db->prepare ( 'SELECT * FROM question WHERE pollId = ?' );
 $stmt->execute ( array (
 		$poll->pollId 

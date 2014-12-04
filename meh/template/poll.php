@@ -1,9 +1,8 @@
-<?php
-$pollid = $_GET ['id'];
-$db = new PDO ( 'sqlite:database.db' );
-$stmt = $db->prepare ( 'SELECT * FROM poll WHERE pollId = ?' );
+<?php 
+if (!isset ( $_SESSION ['username'] )){
+	$_SESSION['msg']='<p id="error">Not logged in</p>';
+	header ( 'Location: ./' );
+	return false;
+}
 
-$poll = $stmt->fetchObject();
-$_SESSION['username'];
-
-?>
+include 'actions/action_getPoll.php';?>

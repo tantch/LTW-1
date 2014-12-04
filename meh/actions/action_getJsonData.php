@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset ( $_SESSION ['username'] )){
+	$_SESSION['msg']='<p id="error">Not logged in</p>';
+	header ( 'Location: ../' );
+	return false;
+}
+
 
 $num1 = (int)$_POST[pid];
 $num2 = (int)$_POST[qid];

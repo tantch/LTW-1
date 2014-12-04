@@ -18,6 +18,7 @@
 
 include 'template/header.php';
 if (isset ( $_GET ['pagina'] )) {
+	
 	$url = 'template/' . $_GET['pagina'] . '.php';
 	include  $url;
 } else {

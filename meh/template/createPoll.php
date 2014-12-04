@@ -1,3 +1,10 @@
+<?php 
+if (!isset ( $_SESSION ['username'] )){
+		$_SESSION['msg']='<p id="error">Not logged in</p>';
+		header ( 'Location: ./' );
+		return false;
+	}?>
+
 <script type="text/javascript" src="./JS/createPoll_buttons.js"></script>
 <h2>Create poll</h2>
 <form action="actions/action_create_poll.php" method="post" enctype="multipart/form-data">
