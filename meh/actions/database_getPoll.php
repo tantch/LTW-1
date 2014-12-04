@@ -37,8 +37,9 @@ $stmt->execute ( array (
 		$poll->pollId 
 ) );
 ?>
-<form>
-	<input type="text" name="poll" value="<?php echo $poll->pollId?>" hidden="true">
+<form action="action_register_vote.php">
+	<input type="text" name="poll" value="<?php echo $poll->pollId?>"
+		hidden="true">
 	<?php
 	while ( $question = $stmt->fetchObject () ) {
 		?><h4><?php	echo $question->content;?> </h4> <?php
@@ -49,8 +50,9 @@ $stmt->execute ( array (
 		) );
 		while ( $answer = $stmta->fetchObject () ) {
 			echo $answer->description?><input required type="radio"
-		name="<?php echo $question->questionId; ?>" value="<?php echo $answer->answerId?>"> <br>
-	<?php } ?>
+		name="<?php echo $question->questionId; ?>"
+		value="<?php echo  $question->questionId."A".$answer->answerId?>"> <br> 
+		<?php } ?>
 <?php } ?>
 <input type="submit" value="Submit">
 </form>

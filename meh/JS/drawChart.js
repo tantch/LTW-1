@@ -24,10 +24,9 @@ function parseURLParams(url) {
 }
 
 function drawQuestion(poll,qes){
-		alert(poll);
 		var formData = {pid : String(poll), qid : String(qes)}
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
+		var options= {packages: ['corechart'], callback : drawChart};
+      google.load("visualization", "1", options);
       function drawChart() {
 		var jsonData = $.ajax({
 	          url: "actions/action_getJsonData.php",
@@ -42,10 +41,8 @@ function drawQuestion(poll,qes){
           pieHole: 0.2,
         };
         var data = new google.visualization.DataTable(jsonData);
-        function selectHandler() {
-            var selectedItem = chart.getSelection()[0];
-            if (selectedItem) {
-              var topping = data.getValue(selectedItem.row, 0);
+        function selectHandler(row,column) {
+        	
               options.slices = options.slices || {};
               // clear all slice offsets
               for (var x in options.slices) {
@@ -53,14 +50,27 @@ function drawQuestion(poll,qes){
                   options.slices[x].offset = 0;
                   
               }
-              options.slices[selectedItem.row] = options.slices[selectedItem.row] || {};
-              options.slices[selectedItem.row].offset = 0.1;
+              options.slices[row['row']] = options.slices[row['row']] || {};
+              options.slices[row['row']].offset = 0.1;
               chart.draw(data, options);
-            }
           }
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        google.visualization.events.addListener(chart, 'select', selectHandler); 
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'+qes));
+        google.visualization.events.addListener(chart, 'onmouseover', selectHandler); 
+        google.visualization.events.addListener(chart, 'onmouseout', function(){
+        	alert('cenas');
+        }); 
         chart.draw(data,options);
       }
+}
+function getQuestionNumber(pollid){
+	var formData = {pid : String(pollid)}
+		var jsonData = $.ajax({
+	          url: "actions/action_getQuestionNumber.php",
+	          type: "POST",
+	          data: formData,
+	          dataType:"json",
+	          async: false
+	          }).responseText;
+	return Number(jsonData);
 }
