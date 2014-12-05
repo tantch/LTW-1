@@ -13,15 +13,17 @@ function validateData() {
 	) );
 	$result = $stmt->fetchColumn ();
 	if ($result == null) {
-		echo 'user no exist';
-		return false;
+		$_SESSION['msg']='<script> alert("User doesnt exist");</script>';
+	header ( 'Location: ../' );
+	return false;
 	}
 	if (password_verify ( $_POST ['password'], $result )) {
 		echo 'login success';
 		return true;
 	} else {
-		echo 'wrong password';
-		return false;
+		$_SESSION['msg']='<script> alert("wrong password");</script>';
+	header ( 'Location: ./' );
+	return false;
 	}
 }
 function login() {

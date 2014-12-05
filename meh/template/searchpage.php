@@ -1,3 +1,3 @@
 <script type="text/javascript" src="JS/search.js"></script>
-<h1>Resultados</h1>
+<h1>Results</h1>
 <div id="searchresult"></div>

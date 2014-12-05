@@ -10,22 +10,30 @@ if (! isset ( $_SESSION ['username'] )) {
 <div class="create-poll-box">
 	<h2>Create poll</h2>
 	<form action="actions/action_create_poll.php" method="post"
-		enctype="multipart/form-data">
+		enctype="multipart/form-data" class="row" id="create-poll">
 		<br>Poll Name: <br>
 		<div class="col-md-12">
-			<input type="text" required name="title" /> <br> Private :
+			<input type="text" required name="title" /> 
 		</div>
 		<div class="col-md-12">
+			<p> Private : 
+		
 			<input type="checkbox" name="private" />
+
+			
+			<input type="file" name="fileToUpload" id="fileToUpload" style="float:right;" required>
+		</p>
+		<button id="addFile" class="btn-addFile" onClick="document.getElementById('fileToUpload').click()">
+				<i class="fa fa-plus" style="color: #00669B;"></i> Add Photo
+			</button>
 		</div>
 		<div class="col-md-12">
-			<input type="file" name="fileToUpload" id="fileToUpload">
+			<button id="addQuestion" class="btn-addquestion" value="&#43">
+				<i class="fa fa-plus" style="color: #00669B;"></i> Add Question
+			</button>
 		</div>
 		<div class="col-md-12">
-			<input type="button" id="addQuestion" value="&#43 Question" />
-		</div>
-		<div class="col-md-12">
-			<input type="submit" value="Create" />
+			<input type="submit" value="Create" id="btn-submit" />
 		</div>
 	</form>
 </div>

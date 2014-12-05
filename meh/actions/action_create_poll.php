@@ -1,6 +1,6 @@
 <?php
 
-//TODO restrições
+//TODO restri��es
 if (! isset ( $_POST ['title'] )) {
 	echo 'title empty';
 	return false;
@@ -35,13 +35,15 @@ if($size === false) {
 }
 $cnt=1;
 while(file_exists($target_file)) {
-	$target_file = $target_dir . pathinfo($target_file,PATHINFO_FILENAME)."( " .  $cnt . ")." .pathinfo($target_file,PATHINFO_EXTENSION);
+	$target_file = $target_dir . pathinfo($target_file,PATHINFO_FILENAME)."(" .  $cnt . ")." .pathinfo($target_file,PATHINFO_EXTENSION);
 	$cnt++;
 }
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 	echo "The file ". $target_file. " has been uploaded.";
 } else {
-	echo "Sorry, there was an error uploading your file.";
+	$_SESSION ['msg'] = '<script> alert("Sorry, there was an error uploading your file.");</script>';
+	header ( 'Location: ./pagina=createPoll' );
+	return false;
 }
 $db = new PDO ( 'sqlite:../database.db' );
 $stmt = $db->prepare ( 'INSERT INTO poll (name,imageURL,creatorId,private) VALUES(?,?,?,?)' );
@@ -79,4 +81,4 @@ while ( isset ( $_POST ['Q' . $question] ) ) {
 	$question ++;
 }
 header("Location: ../?pagina=poll&id=".$pollId);
-?>
+?>?>

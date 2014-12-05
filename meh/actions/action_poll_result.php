@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset ( $_SESSION ['username'] )){
-	$_SESSION['msg']='<p id="error">Not logged in</p>';
+	$_SESSION['msg']='<script> alert("Please log in");</script>';
 	header ( 'Location: ../' );
 	return false;
 }

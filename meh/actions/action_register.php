@@ -57,8 +57,8 @@ function doRegistation() {
 		) );
 		$result_row = $stmt->fetchObject ();
 		if ($result_row) {
-			// TODO add message
-			echo 'username already exists';
+			$_SESSION ['msg'] = '<script> alert("User already exists");</script>';
+			header ( 'Location: ../' );
 			return false;
 		}
 		
@@ -69,7 +69,8 @@ function doRegistation() {
 		$result_row = $stmt->fetchObject ();
 		if ($result_row) {
 			// TODO add message
-			echo 'email already used';
+			$_SESSION ['msg'] = '<script> alert("email already in use");</script>';
+			header ( 'Location: ../' );
 			return false;
 		}
 		// send email
@@ -99,11 +100,11 @@ function doRegistation() {
 function start() {
 	if (isset ( $_SESSION ['username'] )) {
 		header ( 'Location: ../' );
-	}
-	else{
-		doRegistation ();		
+	} else {
+		doRegistation ();
 	}
 }
-start();
+session_start ();
+start ();
 
 ?>

@@ -11,20 +11,15 @@ $poll = $stmt->fetchObject ();
 
 $creator = $poll->creatorId == $_SESSION ['userId'];
 if (! $creator) {
-	header ( 'Location: ../../');
+	header ( 'Location: ../../' );
 	return false;
 }
-$stmt = $db->prepare ( 'DELETE FROM poll WHERE pollId = ?' );
+if ($poll->private == 0)
+	$stmt = $db->prepare ( 'Update poll SET private = 1 WHERE pollId = ?' );
+else
+	$stmt = $db->prepare ( 'Update poll SET private = 0 WHERE pollId = ?' );
 $stmt->execute ( array (
 		$pollid 
 ) );
-$stmt = $db->prepare ( 'DELETE FROM question WHERE pollId = ?' );
-$stmt->execute ( array (
-		$pollid 
-) );
-$stmt = $db->prepare ( 'DELETE FROM answer WHERE pollId = ?' );
-$stmt->execute ( array (
-		$pollid 
-) );
-header ( 'Location: ../../');
+header ( 'Location: ../../?pagina=pollResult&id=' . $pollid );
 ?>

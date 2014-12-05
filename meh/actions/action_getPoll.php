@@ -1,10 +1,12 @@
 <?php
 if (empty ( $_GET )) {
-	echo 'empty get';
+	$_SESSION['msg']='<script> alert("That poll does not exist");</script>';
+	header ( 'Location: ./' );
 	return false;
 }
 if (! isset ( $_GET ['id'] )) {
-	echo 'empty id';
+	$_SESSION['msg']='<script> alert("That poll does not exist");</script>';
+	header ( 'Location: ./' );
 	return false;
 }
 session_start ();
@@ -35,7 +37,8 @@ $stmt->execute ( array (
 ) );
 $poll = $stmt->fetchObject ();
 if (! $poll) {
-	echo 'poll does not exist';
+	$_SESSION['msg']='<script> alert("That poll does not exist");</script>';
+	header ( 'Location: ./' );
 	return false;
 }
 

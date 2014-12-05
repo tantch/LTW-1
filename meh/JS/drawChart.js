@@ -38,6 +38,9 @@ function drawQuestion(poll,qes,name){
 			
         var options = {
           title: name,
+          backgroundColor: '#f0f0f0',
+          width : 600,
+          height: 400,
           pieHole: 0.2,
         };
         var data = new google.visualization.DataTable(jsonData);

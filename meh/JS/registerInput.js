@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded",function() {
 	var lastNameInput = document.getElementById("lastname");
 	lastNameInput.pattern = "^[a-zA-Z][a-zA-Z-_\.]{1,20}$";
 	var usernameInput = document.getElementById("username");
-	usernameInput.pattern = "^[a-zA-Z-\.]{2,15}";
+	usernameInput.pattern = "^[A-Za-z0-9_]{2,15}$";
 	var emailInput = document.getElementById("email");
 	var pwInput = document.getElementById("password");
 	pwInput.pattern = "(?=^.{8,}$)((?=.*[0-9])|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$";
@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded",function() {
 			}, false);
 	lastNameInput.addEventListener("keyup",function() {
 		lastNameInput.setCustomValidity(this.validity.patternMismatch ? "Last Name must contain only letters and can't be bigger than 20 characters": "");
+	}, false);
+	usernameInput.addEventListener("keyup",function() {
+		lastNameInput.setCustomValidity(this.validity.patternMismatch ? "Username must contain only letters and numbers and can't be bigger than 15 characters": "");
 	}, false);
 	emailInput.addEventListener("keyup",function() {
 		lastNameInput.setCustomValidity(this.validity.patternMismatch ? "Please enter a valid email": "");

@@ -8,7 +8,7 @@ $(document).ready(function() {
         	return false;
         }
         var pntr = 'button' + questionId;
-        $("#addQuestion").before("<div class='col-md-12' name='Q"+questionId+"'><input required type='text' class='question' placeholder='Question' name= 'Q" + questionId + "' id= 'question" + questionId + "'/><input type='button' class='removeQuestion' value='X' name='rmvQ" + questionId + "' /><input type='button' class='addAnswer' id ='button" + questionId + "' name='addAQ" + questionId + "' value='+' /></div>");
+        $("#addQuestion").before("<div class='col-md-12' name='Q"+questionId+"'><input required type='text' class='question' placeholder='Question' name= 'Q" + questionId + "' id= 'question" + questionId + "'/><button class='removeQuestion' value='X' name='rmvQ" + questionId + "'><i class='fa fa-times' style='color: #00669B;'></i> </button> <button class='addAnswer' id ='button" + questionId + "' name='addAQ" + questionId + "' value='+' ><i class='fa fa-plus' style='color: #00669B;'></i> Add Answer </button></div>");
         questions[questionId] = 0;
         questionId++;
         $(".addAnswer").off('click').click(function(event) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
             	return false;
             }
             questions[questionN] ++;
-            $(event.target).before("<div class='col-md-12' name='Q"+questionN+"A"+answerN+"'><input type='text' class='answer' placeholder='Answer' required name='Q" + questionN + "A" + answerN + "'/><input type='button' class='removeAnswer' value='X' name='rmvQ" + questionN + "A" + answerN + "' />");
+            $(event.target).before("<div class='col-md-12' name='Q"+questionN+"A"+answerN+"'><input type='text' class='answer' placeholder='Answer' required name='Q" + questionN + "A" + answerN + "'/><button class='removeAnswer' value='X' name='rmvQ" + questionN + "A" + answerN + "' > <i class='fa fa-times' style='color: #00669B;'></i> </button>");
             $(".removeAnswer").off('click').click(function(event) {
             	
                 var nm = $(event.target).attr("name");

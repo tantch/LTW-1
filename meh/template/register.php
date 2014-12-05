@@ -1,6 +1,6 @@
 <?php 
 if (isset ( $_SESSION ['username'] )){
-	$_SESSION['msg']='<p id="error">Already logged in</p>';
+	$_SESSION['msg']='<script> alert("Already logged in");</script>';
 	header ( 'Location: ./' );
 	return false;
 }
