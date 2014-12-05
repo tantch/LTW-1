@@ -1,28 +1,26 @@
-
-<div id="header">
-	<h1>Meh Polls</h1>
-</div>
-<div id="header_menu">
+<div class="nav-bar" id="header_menu">
 	<ul>
 		<li><a href="./?pagina=home">Home</a></li>
-			<?php
-			if (isset ( $_SESSION ['username'] )) {
-				?>
-		<li><a href="./?pagina=createPoll">New Poll</a></li>
-		<li>
-			<?php include 'template/searchform.php';?>
-			<form action="./actions/action_logout.php" method="post">
-				<label><?=$_SESSION['username']?></label> <input type="submit"
+			
+			<li><a href="./?pagina=register">Sign up</a></li>
+			
+			<li><a href="./?pagina=createPoll">New Poll</a></li>
+
+			<li >
+			<?php if (isset($_SESSION['username'])) { ?>
+			<form action="./actions/action_logout.php" method="post" id="logout">
+				<label><?=$_SESSION['username']?></label> <input type="submit" id="button-logout"
 					value="Logout">
 			</form>
+		</li>
 			<?php
+				
 			} else {
 				include 'template/login.php';
-				?>
-		</li>
-		<li><a href="./?pagina=register">
-				<button class="button" type="button">Sign up</button>
-		</a></li>
-			<?php }	?>
+			
+			
+			
+				}	?>
+				<li><a><?php include 'template/searchform.php';?></a></li>
 	</ul>
 </div>

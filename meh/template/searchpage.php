@@ -1,3 +1,3 @@
 <script type="text/javascript" src="JS/search.js"></script>
-<?php include 'include template/searchform.php'?>
+<h1>Resultados</h1>
 <div id="searchresult"></div>

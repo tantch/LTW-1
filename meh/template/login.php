@@ -1,10 +1,7 @@
-<li><div class="login-box">
-		<form action="./actions/action_login.php" method="post">
-			<input type="text" name="username" placeholder="login" autofocus>
-			<br>
-			<input type="password" name="password" placeholder="password" autocomplete="on">
-			<br> <br>
-			<input class="button" type="submit" value="Log in">
+<li>
+		<form action="./actions/action_login.php" method="post" id="login-box">
+			<input class="login-input" type="text" name="username" placeholder="login" autofocus>
+			<input class="login-input" type="password" name="password" placeholder="password" autocomplete="on">
+			<input class="button-login" type="submit" value="Log in">
 		</form>
-			<br>
-	</div></li>
+	</li>

@@ -9,20 +9,27 @@ if (isset ( $_SESSION ['username'] )){
 <script type="text/javascript" src="./JS/registerInput.js"></script>
 <div class="register-box">
 	<h1>Register</h1>
-	<form action="actions/action_register.php" method="post">
+	<form action="actions/action_register.php" method="post" id="register" class="row">
+		<div class="col-md-12">
 		<input type="text" id="firstname" name="firstname" value="" placeholder="myFirst Name" required />
-		<br>
+		</div>
+		<div class="col-md-12">
 		<input type="text" id="lastname" name="lastname" value="" placeholder="myLastName" required />
-		<br>
+		</div>
+		<div class="col-md-12">
 		<input type="text" id="username" name="username" value="" placeholder="username" required />
-		<br>
+		</div>
+		<div class="col-md-12">
 		<input type="email" id="email" name="email" value="" placeholder="myemail@gmail.com" required />
-		<br>
+		</div>
+		<div class="col-md-12">
 		<input type="password" id="password" name="password" value="" placeholder="password" required />
-		<br>
+		</div>
+		<div class="col-md-12">
 		<input type="password" id="cpassword" name="cpassword" value="" placeholder="confirm password" required />
-		<br> <br>
+		</div>
+		<div class="col-md-12">
 		<input class="button" type="submit" value="I wanna be a member!" />
+		</div>
 	</form>
-	<br>
 </div>
