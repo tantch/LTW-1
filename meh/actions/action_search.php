@@ -10,9 +10,9 @@ function search() {
 		?>
 
 	<a href="?pagina=poll&id=<?php echo $row['pollId']?>">
-		<div>
+		<div class="poll-box">
 		  <img src=<?php echo substr($row['imageURL'],1)?> alt="Poll image" style="width:304px;height:228px">
-		<?php echo $row['name']?>
+			<p id="poll-name"> <?php echo $row['name']?> </p>
 		</div>
 	</a>
 

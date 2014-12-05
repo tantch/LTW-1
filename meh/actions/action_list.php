@@ -8,5 +8,5 @@
 		?>
 		  <img src=<?php echo substr($row['imageURL'],1)?> alt="Poll image" style="width:304px;height:228px">
 <a href="?pagina=poll&id=<?php echo $row['pollId']?>">
-		<?php echo $row['name']?></a>
+		<p><?php echo $row['name']?></p></a>
 <br><?php } ?>

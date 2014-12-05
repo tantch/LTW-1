@@ -6,6 +6,6 @@ if (! isset ( $_SESSION ['username'] )) {
 }
 ?>
 <form action="actions/action_changePass.php" method="post">
-	<input type="password" id="password" name="password" value="" required />
+	<input type="password" id="password" name="password" placeholder="password" value="" required />
 	<input type="submit" hidden="true">
 </form>
