@@ -4,6 +4,7 @@
 
 			<?php if (!isset($_SESSION['username'])) { ?>
 		<li><a href="./?pagina=register">Sign up</a></li>
+		<li><a href="./?pagina=resetPass">Reset Password</a></li>
 		<?php
 			} else {?>
 		<li><a href="./?pagina=createPoll">New Poll</a></li>
@@ -18,6 +19,7 @@
 				<input type="submit" id="button-logout" value="Logout">
 			</form>
 		</li>
+		<li><a href="./?pagina=changePass">Change Password</a></li>
 			<?php
 			} else {
 				include 'template/login.php';

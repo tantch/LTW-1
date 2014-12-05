@@ -52,6 +52,7 @@ if (! $user) {
 	return false;
 }
 ?>
+<img src=<?php echo substr($poll->imageURL,1)?> alt="Mountain View" style="width:304px;height:228px">
 <h2> Poll - <?php echo $poll->name?></h2>
 <p>Created by <?php echo $user->firstname . " " . $user->lastname?></p>
 <?php

@@ -8,6 +8,7 @@ function generateRandomString($length = 10) {
 	}
 	return $randomString;
 }
+
 if (version_compare ( PHP_VERSION, '5.3.7', '<' )) {
 	echo "Sorry, Simple PHP Login does not run on a PHP version older than 5.3.7 !";
 } elseif (version_compare ( PHP_VERSION, '5.5.0', '<' )) {
@@ -20,9 +21,9 @@ $stmt->execute ( array (
 ) );
 $user = $stmt->fetchObject ();
 
-if ($user->email != $_POST ['email'])
-{
-
+if ($user->email != $_POST ['email']) {
+	echo fail;
+	header ( 'Location: ../' );
 }
 
 $newPass = generateRandomString ();
@@ -41,5 +42,6 @@ $stmt->execute ( array (
 		$hash,
 		$_POST ['username'] 
 ) );
+	header ( 'Location: ../?pagina=reseted.php' );
 
 ?>

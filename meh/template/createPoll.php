@@ -1,6 +1,6 @@
 <?php
 if (! isset ( $_SESSION ['username'] )) {
-	$_SESSION ['msg'] = '<p id="error">Not logged in</p>';
+	$_SESSION['msg']='<script> alert("Please log in");</script>';
 	header ( 'Location: ./' );
 	return false;
 }
@@ -13,17 +13,21 @@ if (! isset ( $_SESSION ['username'] )) {
 		enctype="multipart/form-data" class="row" id="create-poll">
 		<br>Poll Name: <br>
 		<div class="col-md-12">
-			<input type="text" required name="title" /> 
+			<input type="text" required name="title" />
 		</div>
 		<div class="col-md-12">
-			<p> Private : 
-		
-			<input type="checkbox" name="private" />
+			<p>
+				Private : <input type="checkbox" name="private" />
 
-			
-			<input type="file" name="fileToUpload" id="fileToUpload" style="float:right;" required>
-		</p>
-		<button id="addFile" class="btn-addFile" onClick="document.getElementById('fileToUpload').click()">
+
+			</p>
+			<div style='height: 0px; width: 0px; overflow: hidden;'>
+				<input type="file" name="fileToUpload" id="fileToUpload"
+					style="float: right;"required/>
+			</div>
+			<img id="prev" src="#" alt="No image uploaded" />
+			<button id="addFile" class="btn-addFile"
+				onClick="document.getElementById('fileToUpload').click()">
 				<i class="fa fa-plus" style="color: #00669B;"></i> Add Photo
 			</button>
 		</div>

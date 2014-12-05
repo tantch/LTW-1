@@ -22,7 +22,7 @@ function validateData() {
 		return true;
 	} else {
 		$_SESSION['msg']='<script> alert("wrong password");</script>';
-	header ( 'Location: ./' );
+	header ( 'Location: ../' );
 	return false;
 	}
 }

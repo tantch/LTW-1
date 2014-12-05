@@ -1,6 +1,25 @@
 var questionId = 0;
 var questions = [];
+
 $(document).ready(function() {
+	
+	
+
+	$("#fileToUpload").change(function(){
+
+	    if (this.files && this.files[0]) {
+	        var reader = new FileReader();
+
+	        reader.onload = function (e) {
+	            $('#prev').attr('src', e.target.result);
+	        }
+
+	        reader.readAsDataURL(this.files[0]);
+	    }
+	});
+
+	
+	
     $("#addQuestion").click(function() {
         var size = $(".removeQuestion").length;
         if(size >=6){
